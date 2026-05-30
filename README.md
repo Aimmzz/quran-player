@@ -118,7 +118,7 @@ https://cdn.islamic.network/quran/audio-surah/128/{edition}/{surah}.mp3
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/quran_player.git
+git clone https://github.com/Aimmzz/quran-player.git
 cd quran_player
 
 # Install dependencies
