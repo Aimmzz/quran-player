@@ -3,6 +3,8 @@ import 'package:quranplayer/presentation/screen/home/home_binding.dart';
 import 'package:quranplayer/presentation/screen/home/home_screen.dart';
 import 'package:quranplayer/presentation/screen/player/player_binding.dart';
 import 'package:quranplayer/presentation/screen/player/player_screen.dart';
+import 'package:quranplayer/presentation/screen/search/surah_reciter_search_binding.dart';
+import 'package:quranplayer/presentation/screen/search/surah_reciter_search_screen.dart';
 
 part 'app_routes.dart';
 
@@ -24,6 +26,12 @@ class AppPages {
       binding: PlayerBinding(),
       transition: Transition.downToUp,
       transitionDuration: const Duration(milliseconds: 350),
+    ),
+    GetPage(
+      name: Routes.search,
+      page: () => const SurahReciterSearchScreen(),
+      binding: SurahReciterSearchBinding(),
+      transition: Transition.fadeIn,
     ),
   ];
 }

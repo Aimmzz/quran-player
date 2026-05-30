@@ -39,7 +39,7 @@ class HomeScreen extends GetView<HomeController> {
           IconButton(
             icon: const Icon(Icons.search_rounded),
             tooltip: 'Search',
-            onPressed: () => {},
+            onPressed: controller.openSearch,
           ),
           const SizedBox(width: 4),
         ],
