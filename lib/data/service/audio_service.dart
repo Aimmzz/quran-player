@@ -39,7 +39,6 @@ class AudioService extends GetxService {
     }
 
     currentTrack.value = track;
-    playbackState.value = PlaybackState.loading;
 
     try {
       await _player.setUrl(track.audioUrl);
@@ -82,21 +81,28 @@ class AudioService extends GetxService {
     });
 
     _player.playerStateStream.listen((state) {
-      isBuffering.value = state.processingState == ProcessingState.buffering ||
-          state.processingState == ProcessingState.loading;
+      final processing = state.processingState;
 
-      if (state.processingState == ProcessingState.completed) {
+      isBuffering.value = processing == ProcessingState.buffering ||
+          processing == ProcessingState.loading;
+
+      if (processing == ProcessingState.completed) {
         playbackState.value = PlaybackState.stopped;
         _player.seek(Duration.zero);
         return;
       }
 
+      if (processing == ProcessingState.idle) {
+        playbackState.value = PlaybackState.idle;
+        return;
+      }
+
       if (state.playing) {
         playbackState.value = PlaybackState.playing;
-      } else if (state.processingState == ProcessingState.idle) {
-        playbackState.value = PlaybackState.idle;
       } else {
-        playbackState.value = PlaybackState.paused;
+        if (playbackState.value != PlaybackState.loading) {
+          playbackState.value = PlaybackState.paused;
+        }
       }
     });
   }

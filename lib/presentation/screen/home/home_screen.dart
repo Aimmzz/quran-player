@@ -66,17 +66,20 @@ class HomeScreen extends GetView<HomeController> {
             const Divider(height: 1),
 
             Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.only(bottom: 80),
-                itemCount: controller.surahs.length,
-                itemBuilder: (context, index) {
-                  final surah = controller.surahs[index];
-                  return Obx(() => SurahListTile(
-                    surah: surah,
-                    isPlaying: controller.isPlayingTrack(surah.number),
-                    onTap: () => {},
-                  ));
-                },
+              child: RefreshIndicator(
+                onRefresh: controller.refreshData,
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(bottom: 80),
+                  itemCount: controller.surahs.length,
+                  itemBuilder: (context, index) {
+                    final surah = controller.surahs[index];
+                    return Obx(() => SurahListTile(
+                      surah: surah,
+                      isPlaying: controller.isPlayingTrack(surah.number),
+                      onTap: () => controller.openPlayer(surah),
+                    ));
+                  },
+                ),
               ),
             ),
           ],

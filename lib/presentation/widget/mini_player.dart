@@ -88,6 +88,17 @@ class MiniPlayer extends StatelessWidget {
                         }
                       },
                     ),
+
+                    IconButton(
+                      icon: const Icon(
+                        Icons.close_rounded,
+                        size: 22,
+                      ),
+                      tooltip: 'Close Player',
+                      onPressed: () {
+                        audioService.stop();
+                      },
+                    ),
                   ],
                 ),
               ),

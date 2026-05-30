@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:quranplayer/core/routes/app_pages.dart';
 import 'package:quranplayer/data/model/reciter.dart';
 import 'package:quranplayer/data/model/surah.dart';
+import 'package:quranplayer/data/model/track.dart';
 import 'package:quranplayer/data/repository/quran_repository.dart';
 import 'package:quranplayer/data/service/audio_service.dart';
 
@@ -24,13 +26,28 @@ class HomeController extends GetxController {
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // Public Methods //////////////////////////////////////////////////////////////////////////////////////////////////
+  // Public Methods ////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   void retry() => _loadData();
 
+  Future<void> refreshData() async {
+    surahs.clear();
+    reciters.clear();
+    selectedReciter.value = null;
+    await _loadData();
+  }
+
   void selectReciter(Reciter reciter) {
     selectedReciter.value = reciter;
+  }
+
+  void openPlayer(Surah surah) {
+    final reciter = selectedReciter.value;
+    if (reciter == null) return;
+
+    final track = Track(surah: surah, reciter: reciter);
+    Get.toNamed(Routes.player, arguments: track);
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
