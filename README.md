@@ -7,8 +7,18 @@ A mobile Quran audio player built with Flutter, featuring surah browsing, recite
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="assets/appstore.png" width="1024" alt="App Logo" style="border-radius: 32px;"/>
+  <img src="assets/appstore.png" width="160" alt="App Logo" style="border-radius: 32px;"/>
 </p>
+
+### 📸 Application Interface
+
+|                            Home Screen                             |                                        Home with Mini Player                                         |
+|:------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------:|
+| <img src="assets/home_screen.jpeg" width="340" alt="Home Screen"/> | <img src="assets/home_screen_with_mini_player.jpeg" width="340" alt="Home Screen with Mini Player"/> |
+
+|                             Player Screen                              |                             Search Screen                              |
+|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|
+| <img src="assets/player_screen.jpeg" width="340" alt="Player Screen"/> | <img src="assets/search_screen.jpeg" width="340" alt="Search Screen"/> |
 
 ---
 
